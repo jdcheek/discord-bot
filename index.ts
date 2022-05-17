@@ -1,6 +1,7 @@
 import fs from "node:fs";
-import Discord, { Intents, MessageEmbed, Client, Collection } from "discord.js";
-const { token } = require("./config.json");
+import { Intents, Client, Collection } from "discord.js";
+import { deployMods } from "./deploy-commands";
+const { token, guildId } = require("./config.json");
 
 declare module "discord.js" {
   export interface Client {
@@ -12,18 +13,20 @@ const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
-client.commands = new Collection();
-const commandFiles = fs
-  .readdirSync("./commands")
-  .filter((file) => file.endsWith(".ts"));
-
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  client.commands.set(command.data.name, command);
-}
-
 client.once("ready", () => {
   console.log("Puckhead is ready");
+  deployMods();
+
+  client.commands = new Collection();
+  const commandFiles = fs
+    .readdirSync("./commands")
+    .filter((file) => file.endsWith(".js"));
+
+  for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.data.name, command);
+    console.log(client.commands);
+  }
 });
 
 client.on("interactionCreate", async (interaction) => {
