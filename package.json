@@ -1,12 +1,20 @@
 {
   "dependencies": {
+    "@discordjs/builders": "^0.13.0",
     "@discordjs/rest": "^0.4.1",
     "body-parser": "^1.20.0",
+    "discord-api-types": "^0.32.1",
     "discord.js": "^13.6.0",
-    "express": "^4.18.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.16"
   },
   "scripts": {
-    "dev": "nodemon index.ts"
+    "dev": "nodemon index.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "deploy": "tsc --build && node index.js",
+    "start": "node index.js"
   }
 }
