@@ -10,7 +10,7 @@ module.exports = {
     const gameData = await fetchLinescore();
 
     const fieldsArray: any = [];
-    gameData.forEach((game: any) => {
+    gameData.dates[0].games.forEach((game: any) => {
       fieldsArray.push([
         {
           name: `${game.teams.home.team.name} vs ${game.teams.away.team.name}`,
@@ -21,19 +21,18 @@ module.exports = {
 
     const gameEmbed = new MessageEmbed()
       .setColor("#0099ff")
-      .setTitle("Hockey")
+      .setTitle("Current NHL Games:")
       .setAuthor({
         name: "jdcheek@github",
         url: "https://github.com/jdcheek",
       })
       .setDescription(
-        "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2022. All Rights Reserved."
+        "[View my source code!](https://github.com/jdcheek/discord-bot)"
       )
       .addFields(fieldsArray.flat())
       .setTimestamp()
       .setFooter({
-        text: "View my source code!",
-        iconURL: "https://github.com/jdcheek/discord-bot",
+        text: `${gameData.copyright}`,
       });
 
     return interaction.reply({ embeds: [gameEmbed] });
