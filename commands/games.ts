@@ -1,13 +1,13 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { MessageEmbed } from "discord.js";
-import { fetchGames } from "../lib/fetchLinescore";
+import { fetchLinescore } from "../lib/fetchLinescore";
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("games")
     .setDescription("Replies with games and scores for the current day"),
   async execute(interaction: any) {
-    const gameData = await fetchGames();
+    const gameData = await fetchLinescore();
 
     const fieldsArray: any = [];
     gameData.forEach((game: any) => {
