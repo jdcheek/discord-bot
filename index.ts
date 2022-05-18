@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { Intents, Client, Collection } from "discord.js";
 import { deployMods } from "./deploy-commands";
-const { token, guildId } = require("./config.json");
+const { token } = require("./config.json");
 
 declare module "discord.js" {
   export interface Client {
