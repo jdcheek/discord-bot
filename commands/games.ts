@@ -5,7 +5,7 @@ import { fetchLinescore } from "../lib/fetchLinescore";
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("games")
-    .setDescription("Replies with games and scores for the current day"),
+    .setDescription("Replies with NHL games and scores for the current day"),
   async execute(interaction: any) {
     const gameData = await fetchLinescore();
     const embed = gamesEmbed(gameData);
