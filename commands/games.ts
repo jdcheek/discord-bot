@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { gamesEmbed } from "./gamesEmbed";
-import { fetchLinescore } from "../../lib/fetchLinescore";
+import { gamesEmbed } from "../embeds/gamesEmbed";
+import { fetchLinescore } from "../lib/fetchLinescore";
 
 module.exports = {
   data: new SlashCommandBuilder()
