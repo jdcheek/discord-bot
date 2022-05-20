@@ -1,14 +1,17 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { teamsEmbed } from "../embeds/teamsEmbed";
+import { selectTeamsComponent } from "../components/selectTeam";
 import { fetchTeams } from "../lib/fetchTeams";
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("teams")
-    .setDescription("Replies with list of current NHL teams"),
+    .setDescription("Replies with dropdown of current NHL teams to view"),
   async execute(interaction: any) {
     const teamsData = await fetchTeams();
-    const embed = teamsEmbed(teamsData);
-    return interaction.reply({ embeds: [embed] });
+    const select = await selectTeamsComponent(teamsData);
+    return interaction.reply({
+      content: "Select a team to view more information!",
+      components: select,
+    });
   },
 };
