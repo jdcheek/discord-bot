@@ -5,6 +5,7 @@ export async function selectTeamsComponent(teamsData: any) {
   let westConfArray: any = [];
 
   teamsData.teams.forEach((team: any) => {
+    // Select option total exceeds maximum of 25, split into conferences to prevent errors.
     if (team.conference.id === 5) {
       westConfArray.push({
         label: team.name,
