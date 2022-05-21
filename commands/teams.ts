@@ -9,7 +9,7 @@ module.exports = {
   async execute(interaction: any) {
     const teamsData = await fetchTeams();
     const select = await selectTeamsComponent(teamsData);
-    return interaction.reply({
+    return await interaction.reply({
       content: "Select a team to view more information!",
       components: select,
     });
