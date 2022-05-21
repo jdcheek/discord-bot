@@ -23,7 +23,7 @@ export async function selectTeamsComponent(teamsData: any) {
 
   const east = new MessageActionRow().addComponents(
     new MessageSelectMenu()
-      .setCustomId("select")
+      .setCustomId("east")
       .setPlaceholder("Eastern Conference")
       .addOptions(eastConfArray)
   );
