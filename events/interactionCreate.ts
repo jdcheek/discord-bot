@@ -1,3 +1,5 @@
+import { fetchTeamStats } from "../lib/fetchTeamStats";
+
 module.exports = {
   name: "interactionCreate",
   async execute(interaction: any) {
@@ -17,6 +19,13 @@ module.exports = {
 
     if (interaction.isSelectMenu()) {
       console.log(interaction);
+      if (interaction.customId === "east" || interaction.customId === "west") {
+        const team = await fetchTeamStats(interaction.values);
+        await interaction.update({
+          content: "Something was selected!",
+          components: [],
+        });
+      }
     }
   },
 };
