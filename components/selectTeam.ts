@@ -9,13 +9,13 @@ export async function selectTeamsComponent(teamsData: any) {
     if (team.conference.id === 5) {
       westConfArray.push({
         label: team.name,
-        description: team.id.toString(),
+        description: team.name,
         value: team.id.toString(),
       });
     } else {
       eastConfArray.push({
         label: team.name,
-        description: team.id.toString(),
+        description: team.name,
         value: team.id.toString(),
       });
     }
