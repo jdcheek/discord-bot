@@ -15,12 +15,16 @@ module.exports = {
           await rest.put(Routes.applicationCommands(clientId), {
             body: commands,
           });
-          console.log("Successfully registered application global commands.");
+          console.log(
+            "Successfully registered application global slash commands."
+          );
         } else {
           await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
             body: commands,
           });
-          console.log("Successfully registered application guild commands.");
+          console.log(
+            "Successfully registered application guild slash commands."
+          );
         }
       } catch (error) {
         console.log("Failed to deploy commands: ", error);
