@@ -5,7 +5,7 @@ export function teamsEmbed(teamsData: any) {
   teamsData.teams.forEach((team: any) => {
     fieldsArray.push([
       {
-        name: team.name,
+        name: `${team.name}: ${team.id.toString()}`,
         value: team.officialSiteUrl,
         inline: true,
       },
