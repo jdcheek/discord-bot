@@ -44,6 +44,7 @@ module.exports = {
     if (interaction.options.getSubcommand() === "set") {
       const team = interaction.options.getString("team");
       const teamSchedule = await fetchTeamSchedule(team);
+      console.log(interaction.user.username);
 
       if (!teamSchedule.teams[0].nextGameSchedule.dates[0].date) {
         return await interaction.reply("There are no upcoming games scheduled");
