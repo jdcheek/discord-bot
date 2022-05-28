@@ -1,12 +1,16 @@
 import { MessageEmbed } from "discord.js";
+import moment from "moment";
 
 export function gamesEmbed(gameData: any) {
   const fieldsArray: any = [];
   gameData.dates[0].games.forEach((game: any) => {
+    const startTime: Date = new Date(game.gameDate);
     fieldsArray.push([
       {
-        name: `${game.teams.home.team.name} vs ${game.teams.away.team.name}`,
-        value: `Start: ${game.gameDate} : Time Remaining: ${game.linescore.currentPeriodTimeRemaining}, Period: ${game.linescore.currentPeriodOrdinal}, Score: ${game.teams.home.score} - ${game.teams.away.score}`,
+        name: `${game.teams.away.team.name} ${game.teams.away.score} at ${game.teams.home.team.name} ${game.teams.home.score}`,
+        value: `Start: ${moment(startTime).format("LT")}, ${
+          game.linescore.currentPeriodTimeRemaining
+        } ${game.linescore.currentPeriodOrdinal}`,
       },
     ]);
   });
