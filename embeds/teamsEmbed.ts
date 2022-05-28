@@ -20,7 +20,7 @@ export function teamsEmbed(teamsData: any) {
       url: "https://github.com/jdcheek",
     })
     .setDescription(
-      "[View my source code!](https://github.com/jdcheek/discord-bot)"
+      "Use your team's ID number to add to your follow list with /puck set 'team id'"
     )
     .addFields(fieldsArray.flat())
     .setTimestamp()
