@@ -23,7 +23,7 @@ module.exports = {
       subcommand
         .setName("set")
         .setDescription(
-          "Set a team to follow by entering team ID. Find your team's ID with `/puck games`"
+          "Set a team to follow by entering team ID. Find your team's ID with `/puck teams`"
         )
         .addStringOption((option) =>
           option.setName("team").setDescription("Team").setRequired(true)
