@@ -1,18 +1,23 @@
 import { MessageEmbed } from "discord.js";
 import moment from "moment";
 
+type Game = {
+  name: string;
+  value: string;
+}
+
 export function gamesEmbed(gameData: any) {
-  const fieldsArray: any = [];
+  let fieldsArray: Game[] = [];
   gameData.dates[0].games.forEach((game: any) => {
     const startTime: Date = new Date(game.gameDate);
-    fieldsArray.push([
+    fieldsArray.push(
       {
         name: `${game.teams.away.team.name} ${game.teams.away.score} at ${game.teams.home.team.name} ${game.teams.home.score}`,
         value: `Start: ${moment(startTime).format("LT")}, ${
           game.linescore.currentPeriodTimeRemaining
         } ${game.linescore.currentPeriodOrdinal}`,
       },
-    ]);
+    );
   });
 
   const gamesEmbed = new MessageEmbed()
@@ -25,7 +30,7 @@ export function gamesEmbed(gameData: any) {
     .setDescription(
       "[View my source code!](https://github.com/jdcheek/discord-bot)"
     )
-    .addFields(fieldsArray.flat())
+    .addFields(fieldsArray)
     .setTimestamp()
     .setFooter({
       text: `${gameData.copyright}`,
