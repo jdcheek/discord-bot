@@ -16,14 +16,14 @@ module.exports = {
             body: commands,
           });
           console.log(
-            "Successfully registered application global slash commands."
+            "Successfully registered application GLOBAL slash commands."
           );
         } else {
           await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
             body: commands,
           });
           console.log(
-            "Successfully registered application guild slash commands."
+            "Successfully registered application GUILD slash commands."
           );
         }
       } catch (error) {
