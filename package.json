@@ -12,7 +12,7 @@
     "nodemon": "^2.0.16"
   },
   "scripts": {
-    "dev": "nodemon index.ts",
+    "dev": "tsc --build && nodemon index.js",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "deploy": "tsc --build && node index.js",
