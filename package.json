@@ -19,6 +19,6 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "deploy": "tsc --build && node index.js",
-    "start": "node index.js"
+    "start": "ts-node index.ts"
   }
 }
