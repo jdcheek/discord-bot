@@ -48,6 +48,9 @@ module.exports = {
       if (!teamSchedule.teams[0].nextGameSchedule.dates[0].date) {
         return await interaction.reply("There are no upcoming games scheduled");
       } else {
+        // get user
+        // watch linescore of game
+        // message user when score occurs
         return await interaction.reply(
           `${interaction.user.username} is now following the ${teamSchedule.teams[0].name}. The next game date is: ${teamSchedule.teams[0].nextGameSchedule.dates[0].date}`
         );
